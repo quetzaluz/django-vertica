@@ -20,7 +20,9 @@ if pyodbc_ver < (2, 0, 38, 9999):
     from django.core.exceptions import ImproperlyConfigured
     raise ImproperlyConfigured("pyodbc 2.0.38 or newer is required; you have %s" % Database.version)
 
-from django.db.backends import BaseDatabaseWrapper, BaseDatabaseFeatures, BaseDatabaseValidation
+from django.db.backends.base.base import BaseDatabaseWrapper
+from django.db.backends.base.features import BaseDatabaseFeatures
+from django.db.backends.base.validation import BaseDatabaseValidation
 from django.db.backends.signals import connection_created
 from django.conf import settings
 from django import VERSION as DjangoVersion
@@ -78,6 +80,12 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     pass
 
 class DatabaseWrapper(BaseDatabaseWrapper):
+    client_class = DatabaseClient
+    creation_class = DatabaseCreation
+    features_class = DatabaseFeatures
+    introspection_class = DatabaseIntrospection
+    validation_class = BaseDatabaseValidation
+    ops_class = DatabaseOperations
     drv_name = None
     driver_needs_utf8 = None
     MARS_Connection = False

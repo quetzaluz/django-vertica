@@ -1,4 +1,4 @@
-from django.db.backends.creation import BaseDatabaseCreation, \
+from django.db.backends.base.creation import BaseDatabaseCreation, \
     TEST_DATABASE_PREFIX
 import base64
 from django.utils.hashcompat import md5_constructor

@@ -1,4 +1,4 @@
-from django.db.backends import BaseDatabaseIntrospection
+from django.db.backends.base.introspection import BaseDatabaseIntrospection
 import pyodbc as Database
 import types
 import datetime

@@ -1,4 +1,4 @@
-from django.db.backends import BaseDatabaseClient
+from django.db.backends.base.client import BaseDatabaseClient
 import os
 import sys
 
